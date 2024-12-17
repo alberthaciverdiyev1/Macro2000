@@ -54,4 +54,11 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'welcome/login';     
 $route['register'] = 'welcome/register'; 
+$route['task-list'] = 'welcome/taskListView'; 
+$route['task-list-by-ajax'] = 'welcome/taskList'; 
+$route['customer-request'] = 'welcome/CustomerRequest'; 
+$route['request-list'] = 'welcome/CustomerRequestListView'; 
+$route['add-customer-request'] = 'welcome/addCustomerRequest'; 
+$route['add-new-customer'] = 'welcome/addNewCustomer'; 
+$route['delete-request'] = 'welcome/deleteRequest'; 
 

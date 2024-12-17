@@ -8,8 +8,8 @@ class User_model extends CI_Model {
         $this->db->where('username', $username);
         $query = $this->db->get('users'); 
         $user = $query->row();
-
-        if ($user && password_verify($password, $user->password)) {
+// var_dump($user->password,$password);die;
+        if ($password == $user->password) {
             return $user; 
         } else {
             return false;

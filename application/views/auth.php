@@ -54,16 +54,15 @@
         console.log({data});
 
         $.post({
-            url: '/index.php/register',  
+            url: 'http://localhost/ci3_project/index.php/register',  
             method: 'POST',
             data: data, 
             success: (response) => {
-                if (response.status) {
-                    window.location.href = "https://stackoverflow.com"; 
-                } else {
-                    alert(response.message);
-                }
-            },
+                data = {}
+                Swal.fire({
+          title: "Success",
+          icon: "success"
+        });            },
             error: (e) => {
                 console.log(e); 
             }
@@ -78,11 +77,19 @@
         console.log({data});
         
         $.post({
-            url: '/index.php/register', 
+            url: 'http://localhost/ci3_project/index.php/login',  
             method: 'POST',
             data: data,
             success: (d) => {
-                window.location.href = "https://stackoverflow.com"; 
+                data = {}
+                let response = JSON.parse(d);
+                console.log(response);
+
+                if (response.user.role === "admin") {
+                    window.location.href = "http://localhost/ci3_project/index.php/task-list"; 
+                }else{
+                    window.location.href = "http://localhost/ci3_project/index.php/customer-request"; 
+                }
             },
             error: (e) => {
                 console.log(e);

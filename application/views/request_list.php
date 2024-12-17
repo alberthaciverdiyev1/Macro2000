@@ -18,6 +18,7 @@ const getAll = () =>{
   $.get({
     url: 'http://localhost/ci3_project/index.php/task-list-by-ajax',
     method: 'GET',
+    data:{"only_requests":true},
     success: (d) => {
       let response = JSON.parse(d);
       let h = "";
@@ -28,7 +29,7 @@ const getAll = () =>{
                 <th scope="row">${i + 1}</th>
                 <td>${element.customer_name}</td>
                 <td>${element.created_at}</td>
-                <td><button  ${+element.status === 1 ? 'disabled' : `data-role="add-to-db" data-task="${element.id}"`}  ${+element.status === 1 ? 'class="bg-warning"' : 'class="bg-success"'} >${+element.status === 1 ? 'Already added' : "Add"} </button></td>
+                <td><button  ${+element.status === 1 ? 'disabled' : `data-role="remove-from-db" data-task="${element.id}"`}  ${+element.status === 1 ? 'class="bg-warning"' : 'class="bg-danger"'} >${+element.status === 1 ? 'Already added' : "Remove"} </button></td>
                </tr>`
       });
       $('#table-body').html(h)
@@ -39,11 +40,11 @@ const getAll = () =>{
   });
 }
 getAll();
-  $(document).on("click", `[data-role="add-to-db"]`, function () {
+  $(document).on("click", `[data-role="remove-from-db"]`, function () {
     let id = $(this).data('task');
     let data = { id: id };
     $.post({
-      url: 'http://localhost/ci3_project/index.php/add-new-customer',
+      url: 'http://localhost/ci3_project/index.php/delete-request',
       method: 'POST',
       data: data,
       success: (d) => {
