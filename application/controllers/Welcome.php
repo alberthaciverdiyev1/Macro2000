@@ -118,7 +118,7 @@ class Welcome extends CI_Controller {
 
     public function deleteRequest() {
         $this->load->model('Task_model'); 
-        $response = $this->Task_model->add($this->input->post('id'));
+        $response = $this->Task_model->delete($this->input->post('id'));
 
         echo json_encode($response);
 	}

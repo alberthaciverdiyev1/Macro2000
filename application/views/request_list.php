@@ -50,7 +50,7 @@ getAll();
       success: (d) => {
         data = {}
         Swal.fire({
-          title: "Added customer to database!",
+          title: "Removed customer from database!",
           icon: "success"
         });
         getAll();
